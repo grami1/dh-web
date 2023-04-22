@@ -1,5 +1,12 @@
+import { Fragment } from "react";
+import NavBar from "@/components/navbar/navbar";
+import AreaList from "@/components/areas/area-list";
+
 export default function Home() {
   return (
-    <div className="center">Hello world!</div>
-  )
+    <Fragment>
+      <NavBar />
+      <AreaList />
+    </Fragment>
+  );
 }
