@@ -1,14 +1,33 @@
 import { Fragment } from "react";
 import NavBar from "@/components/navbar/navbar";
-import AreaList from "@/components/areas/area-list";
 import WeatherCard from "@/components/weather/weather-card";
+import { getWeather } from "@/utils/api";
+import { AxiosResponse } from "axios";
+import { Weather } from "@/utils/types";
 
-export default function Home() {
+const token = "";
+
+export default function Home(props) {
   return (
     <Fragment>
       <NavBar />
-      <WeatherCard />
+      <WeatherCard weather={props.weather} />
       {/*  <AreaList />*/}
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  const weatherResponse: AxiosResponse<Weather> = await getWeather(
+    "Stockholm",
+    token
+  );
+  const weather: Weather = weatherResponse.data;
+
+  return {
+    props: {
+      weather: weather,
+    },
+    revalidate: 300,
+  };
 }

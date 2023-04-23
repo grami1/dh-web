@@ -1,10 +1,10 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import classes from "./weather-item.module.css";
+import SvgIcon from "@mui/material/SvgIcon";
 
 export enum ICON_TYPES {
   CONDITION = "condition",
@@ -14,14 +14,15 @@ export enum ICON_TYPES {
 }
 
 export default function WeatherItem(props) {
-  const { iconType, value } = props;
+  const { iconType, value, iconUrl } = props;
+  const formattedIconUrl = `https:${iconUrl}`;
 
   let itemIcon;
   let itemText;
   switch (iconType) {
     case ICON_TYPES.CONDITION:
-      itemIcon = <AccessAlarmIcon sx={{ height: 38, width: 38 }} />;
-      itemText = "Get text from data";
+      itemIcon = <img src={formattedIconUrl} alt="condition" />;
+      itemText = value;
       break;
     case ICON_TYPES.TEMPERATURE:
       itemIcon = <ThermostatIcon />;
@@ -36,8 +37,8 @@ export default function WeatherItem(props) {
       itemText = `${value} %`;
       break;
     default:
-      itemIcon = undefined; //TODO fix
-      itemText = undefined; //TODO fix
+      itemIcon = <SvgIcon />;
+      itemText = "Unknown";
       break;
   }
 
