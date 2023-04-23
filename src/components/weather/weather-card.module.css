@@ -1,0 +1,13 @@
+.card {
+    padding: 20px;
+    float: right;
+    width: 300px;
+}
+
+.condition {
+    padding-bottom: 10px;
+}
+
+.items {
+    padding-top: 10px;
+}
