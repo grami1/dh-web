@@ -1,20 +1,12 @@
-import { Fragment } from "react";
-import NavBar from "@/components/navbar/navbar";
-import WeatherCard from "@/components/weather/weather-card";
 import { getWeather } from "@/utils/api";
 import { AxiosResponse } from "axios";
 import { Weather } from "@/utils/types";
+import HomeView from "@/components/home/home-view";
 
 const token = "";
 
 export default function Home(props) {
-  return (
-    <Fragment>
-      <NavBar />
-      <WeatherCard weather={props.weather} />
-      {/*  <AreaList />*/}
-    </Fragment>
-  );
+  return <HomeView weather={props.weather} />;
 }
 
 export async function getStaticProps() {

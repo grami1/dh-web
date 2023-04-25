@@ -1,11 +1,12 @@
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import AreaCard from "@/components/areas/area-card";
+
+import classes from "./area-list.module.css";
 
 export default function AreaList() {
   return (
-    <Box sx={{ padding: "20px" }}>
+    <div className={classes.area}>
       <Container maxWidth="sm">
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -13,6 +14,6 @@ export default function AreaList() {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </div>
   );
 }
