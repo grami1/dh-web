@@ -1,0 +1,12 @@
+.condition {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    padding-right: 10px;
+}
