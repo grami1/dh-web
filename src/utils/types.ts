@@ -9,3 +9,8 @@ export interface Weather {
   wind: number;
   humidity: number;
 }
+
+export interface Area {
+  areaId: string;
+  areaName: string;
+}
