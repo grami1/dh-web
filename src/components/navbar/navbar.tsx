@@ -6,8 +6,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const router = useRouter();
+  const path = router.pathname;
+
+  const SIGNIN_PATH = "/signin";
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -24,7 +30,11 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Digital Home
           </Typography>
-          <Button color="inherit">Login</Button>
+          {path !== SIGNIN_PATH && (
+            <Button color="inherit" href={SIGNIN_PATH}>
+              Sign in
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
