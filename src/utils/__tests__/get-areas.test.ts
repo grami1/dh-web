@@ -16,7 +16,8 @@ describe("getAreas", () => {
         areaName: "myArea",
       },
     ];
-    const expectedUrl = "http://localhost:8080/api/v1/areas?userId=1";
+    const expectedUrl =
+      "http://localhost:8080/api/v1/areas?username=john@doe.com";
     const expectedOptions = {
       headers: {
         Authorization: "Bearer token",
@@ -25,7 +26,10 @@ describe("getAreas", () => {
 
     mockedAxios.get.mockResolvedValueOnce({ data: areas });
 
-    const areasResponse: AxiosResponse<Area[]> = await getAreas(1, TOKEN);
+    const areasResponse: AxiosResponse<Area[]> = await getAreas(
+      "john@doe.com",
+      TOKEN
+    );
     const actualAreas: Area[] = areasResponse.data;
 
     expect(mockedAxios.get).toHaveBeenCalledWith(expectedUrl, expectedOptions);
